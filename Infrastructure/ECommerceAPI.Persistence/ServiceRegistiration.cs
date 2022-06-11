@@ -16,8 +16,10 @@ namespace ECommerceAPI.Persistence
         {
             services.AddDbContext<ECommerceAppDbContext>(options =>
             {
-                options.UseNpgsql("User ID=postgres;Password=123456;Host=localhost;Port=5432;Database=ECommerceAPIDb");
+                options.UseNpgsql("User ID=rasulquliyevv;Password=rq020314.;Host=localhost;Port=5432;Database=ECommerceAPIDb");
             });
+
+
         }
     }
 }
