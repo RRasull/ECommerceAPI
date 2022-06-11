@@ -11,5 +11,7 @@ namespace ECommerceAPI.Domain.Entities
     {
         public string Description { get; set; }
         public string Address { get; set; }
+
+        public ICollection<Products> Products { get; set; }
     }
 }
