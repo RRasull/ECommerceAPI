@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,13 @@ namespace ECommerceAPI.Application.Repositories
 {
     public interface IQueryRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
+        Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> exp = null, params string[] includes);
+
+        IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> exp = null, params string[] includes);
+
+        Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> exp = null, params string[] includes);
+        Task<bool> IsExistsAsync(Expression<Func<TEntity, bool>> exp = null);
+        Task<TEntity> GetByIdAsync(string id);
 
     }
 }
