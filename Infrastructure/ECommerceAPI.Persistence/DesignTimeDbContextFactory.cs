@@ -19,9 +19,9 @@ namespace ECommerceAPI.Persistence
             //configurationManager.AddJsonFile("appsettings.json");
 
             DbContextOptionsBuilder<ECommerceAppDbContext> dbContextOptionsBuilder = new();
-            dbContextOptionsBuilder.UseNpgsql(Configuration.ConnectionString);
+            dbContextOptionsBuilder.UseNpgsql("User ID=postgres;Password=123456;Host=localhost;Port=5432;Database=ECommerceAPIDb;Integrated Security=true;");
 
-            return new(dbContextOptionsBuilder.Options);
+            return new ECommerceAppDbContext(dbContextOptionsBuilder.Options);
         }
     }
 }
