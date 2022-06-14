@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//builder.Services.AddPersistenceServices();
+builder.Services.AddPersistenceServices();
 
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<ECommerceAppDbContext>(options =>
 {

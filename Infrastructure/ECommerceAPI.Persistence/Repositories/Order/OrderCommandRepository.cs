@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ECommerceAPI.Persistence.Repositories
 {
-    public class OrderCommondRepository : CommandRepository<Order>, IOrderCommondRepository
+    public class OrderCommandRepository : CommandRepository<Order>, IOrderCommandRepository
     {
-        public OrderCommondRepository(ECommerceAppDbContext context) : base(context)
+        public OrderCommandRepository(ECommerceAppDbContext context) : base(context)
         {
         }
     }

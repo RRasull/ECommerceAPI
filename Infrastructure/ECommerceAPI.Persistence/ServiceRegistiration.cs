@@ -7,6 +7,8 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceAPI.Application.Repositories;
+using ECommerceAPI.Persistence.Repositories;
 
 namespace ECommerceAPI.Persistence
 {
@@ -18,6 +20,15 @@ namespace ECommerceAPI.Persistence
             {
                 options.UseNpgsql("User ID=postgres;Password=123456;Host=localhost;Port=5432;Database=ECommerceAPIDb;Integrated Security=true;");
             });
+
+            services.AddSingleton<ICustomerQueryRepository, CustomerQueryRepository>();
+            services.AddSingleton<ICustomerCommandRepository, CustomerCommandRepository>();
+            services.AddSingleton<IProductQueryRepository, ProductQueryRepository>();
+            services.AddSingleton<IProductCommandRepository, ProductCommandRepository>();
+            services.AddSingleton<IOrderQueryRepository, OrderQueryRepository>();
+            services.AddSingleton<IOrderCommandRepository, OrderCommandRepository>();
+
+
         }
     }
 }

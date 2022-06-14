@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceAPI.Application.Repositories
 {
-    public interface IOrderCommondRepository : ICommandRepository<Order>
+    public interface IOrderCommandRepository : ICommandRepository<Order>
     {
     }
 }
