@@ -22,21 +22,46 @@ namespace ECommerceAPI.Persistence.Repositories
 
         public DbSet<TEntity> Table => _context.Set<TEntity>();
 
-        public IQueryable<TEntity> GetAll()
-            => Table.AsQueryable();
+        public IQueryable<TEntity> GetAll(bool tracking = true)
+        {
+            IQueryable<TEntity> query = Table.AsQueryable();
+            if (!tracking)
+                query.AsNoTracking();
+            return query;
+        }
 
 
+        public async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> exp = null, bool tracking = true)
+        {
+            IQueryable<TEntity> query = Table.AsQueryable();
+            if (!tracking)
+                query.AsNoTracking();
 
-        public async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> exp = null)
-            => await Table.FirstOrDefaultAsync(exp);
+           return await query.FirstOrDefaultAsync(exp);
+        }
 
-        public IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> exp)
-            => Table.Where(exp);
+        public IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> exp, bool tracking = true)
+        {
+            IQueryable<TEntity> query = Table.AsQueryable();
+            if (!tracking)
+                query.AsNoTracking();
+            return Table.Where(exp);
+        }
 
-        public async Task<TEntity> GetByIdAsync(string id)
-            => await Table.FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
+        public async Task<TEntity> GetByIdAsync(string id, bool tracking = true)
+        {
+            IQueryable<TEntity> query = Table.AsQueryable();
+            if (!tracking)
+                query.AsNoTracking();
+            return await Table.FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
+        }
 
-        public async Task<bool> IsExistsAsync(Expression<Func<TEntity, bool>> exp = null)
-            => await _context.Set<TEntity>().AnyAsync(exp);
+        public async Task<bool> IsExistsAsync(Expression<Func<TEntity, bool>> exp = null, bool tracking = true)
+        {
+            IQueryable<TEntity> query = Table.AsQueryable();
+            if (!tracking)
+                query.AsNoTracking();
+            return await _context.Set<TEntity>().AnyAsync(exp);
+        }
     }
 }
