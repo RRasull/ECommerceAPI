@@ -10,10 +10,8 @@ namespace ECommerceAPI.Application.Repositories
 {
     public interface IQueryRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> exp = null, params string[] includes);
-
-        IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> exp = null, params string[] includes);
-
+        IQueryable<TEntity> GetAll();
+        IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> exp);
         Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> exp = null, params string[] includes);
         Task<bool> IsExistsAsync(Expression<Func<TEntity, bool>> exp = null);
         Task<TEntity> GetByIdAsync(string id);
