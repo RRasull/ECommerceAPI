@@ -12,7 +12,7 @@ namespace ECommerceAPI.Application.Repositories
     {
         IQueryable<TEntity> GetAll();
         IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> exp);
-        Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> exp = null, params string[] includes);
+        Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> exp = null);
         Task<bool> IsExistsAsync(Expression<Func<TEntity, bool>> exp = null);
         Task<TEntity> GetByIdAsync(string id);
 

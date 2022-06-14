@@ -10,6 +10,6 @@ namespace ECommerceAPI.Application.Repositories
 {
     public interface IRepository<TEntity> where TEntity : BaseEntity
     {
-        public DbSet<TEntity> Model { get; }
+        public DbSet<TEntity> Table { get; }
     }
 }
