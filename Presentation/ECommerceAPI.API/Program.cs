@@ -1,5 +1,7 @@
+using ECommerceAPI.Application.Repositories;
 using ECommerceAPI.Persistence;
 using ECommerceAPI.Persistence.DAL;
+using ECommerceAPI.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ builder.Services.AddEntityFrameworkNpgsql().AddDbContext<ECommerceAppDbContext>(
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL"));
 });
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
