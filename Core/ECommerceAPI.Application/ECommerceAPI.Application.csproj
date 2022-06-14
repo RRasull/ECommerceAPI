@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Repositories\Product\" />
-    <Folder Include="Repositories\Order\" />
   </ItemGroup>
 
 </Project>
